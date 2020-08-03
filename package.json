@@ -1,12 +1,12 @@
 {
   "name": "expect-protractor",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "lib/index.js",
-  "types": "./index.d.ts",
+  "types": "index.d.ts",
   "files": [
     "lib",
-    "./index.d.ts"
+    "index.d.ts"
   ],
   "scripts": {
     "build": "tsc",

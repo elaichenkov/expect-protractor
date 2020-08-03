@@ -2,6 +2,3 @@ src
 tsconfig.json
 tslint.json
 .prettierrc
-
-# Including typings explicitly
-!index.d.ts
