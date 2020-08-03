@@ -1,0 +1,45 @@
+{
+  "name": "expect-protractor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "types": "./index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "lint": "tslint -p tsconfig.json",
+    "format:check": "prettier --check 'src/*.ts'",
+    "format:write": "prettier --write 'src/*.ts'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elaichenkov/expect-protractor.git"
+  },
+  "keywords": [
+    "protractor",
+    "jasmine",
+    "expect-protractor",
+    "assertions",
+    "library",
+    "jasmine"
+  ],
+  "author": "Yevhen Laichenkov <elaichenkov@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elaichenkov/expect-protractor/issues"
+  },
+  "homepage": "https://github.com/elaichenkov/expect-protractor#readme",
+  "devDependencies": {
+    "@types/jasmine": "^3.5.12",
+    "@types/jasminewd2": "^2.0.8",
+    "@types/node": "^14.0.27",
+    "jasmine": "^3.6.1",
+    "prettier": "^2.0.5",
+    "protractor": "^7.0.0",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.9.7"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "extends": ["tslint:recommended", "tslint-config-prettier"],
+  "rules": {
+    "no-duplicate-imports": true,
+    "no-duplicate-variable": true,
+    "no-var-keyword": true,
+    "semicolon": [true],
+    "variable-name": [true, "ban-keywords"],
+    "no-inner-declarations": [true, "function"]
+  }
+}
