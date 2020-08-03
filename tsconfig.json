@@ -9,6 +9,6 @@
         "es2016"
       ]
     },
-    "include": ["./src/*"],
+    "include": ["./src/*", "./index.d.ts"],
     "exclude": ["lib", "node_modules"]
   }
