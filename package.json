@@ -1,16 +1,15 @@
 {
   "name": "expect-protractor",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "main": "lib/index.js",
-  "types": "index.d.ts",
+  "types": "lib/index.d.ts",
   "files": [
-    "lib",
-    "index.d.ts"
+    "lib"
   ],
   "scripts": {
     "build": "tsc",
-    "postbuild": "cp ./index.d.ts lib/",
+    "postbuild": "cp ./src/index.d.ts lib/",
     "lint": "tslint -p tsconfig.json",
     "format:check": "prettier --check 'src/*.ts'",
     "format:write": "prettier --write 'src/*.ts'"
