@@ -1,7 +1,8 @@
 import { ElementFinder } from 'protractor';
-import { isElementDisplayed, isElementPresent, getElementText } from './utils';
+import { isElementDisplayed, isElementPresent, getElementText, getAttribute } from './utils';
 
 const customMatchers: jasmine.AsyncCustomMatcherFactories = {
+  // Element matchers
   toBeDisplayed(): jasmine.AsyncCustomMatcher {
     return {
       compare(element: ElementFinder): jasmine.AsyncCustomMatcherResult {
@@ -65,6 +66,44 @@ const customMatchers: jasmine.AsyncCustomMatcherFactories = {
           result.message = `Expected text '${actualText}' to contain ${expectedText}`;
 
           return actualText.includes(expectedText);
+        });
+
+        return result;
+      },
+    };
+  },
+
+  toHaveValue(): jasmine.AsyncCustomMatcher {
+    return {
+      compare(element: ElementFinder, expectedValue: string): jasmine.AsyncCustomMatcherResult {
+        const result: jasmine.AsyncCustomMatcherResult = {
+          pass: false,
+          message: '',
+        };
+
+        result.pass = getAttribute(element, 'value').then((actualValue: string): boolean => {
+          result.message = `Expected value '${actualValue}' to be ${expectedValue}`;
+
+          return actualValue === expectedValue;
+        });
+
+        return result;
+      },
+    };
+  },
+
+  toContainValue(): jasmine.AsyncCustomMatcher {
+    return {
+      compare(element: ElementFinder, expectedValue: string): jasmine.AsyncCustomMatcherResult {
+        const result: jasmine.AsyncCustomMatcherResult = {
+          pass: false,
+          message: '',
+        };
+
+        result.pass = getAttribute(element, 'value').then((actualValue: string): boolean => {
+          result.message = `Expected value '${actualValue}' to contain ${expectedValue}`;
+
+          return actualValue.includes(expectedValue);
         });
 
         return result;

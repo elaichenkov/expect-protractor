@@ -4,5 +4,7 @@ declare namespace jasmine {
     toBePresent(): Promise<void>;
     toHaveText(expectedText: string): Promise<void>;
     toContainText(expectedText: string): Promise<void>;
+    toHaveValue(expectedValue: string): Promise<void>;
+    toContainValue(expectedValue: string): Promise<void>;
   }
 }

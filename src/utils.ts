@@ -17,3 +17,7 @@ export async function isElementPresent(element: ElementFinder): Promise<boolean>
 export async function getElementText(element: ElementFinder): Promise<string> {
   return element.getText();
 }
+
+export async function getAttribute(element: ElementFinder, attributeName: string): Promise<string> {
+  return element.getAttribute(attributeName);
+}
