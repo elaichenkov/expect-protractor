@@ -9,5 +9,10 @@ declare namespace jasmine {
     toHaveCount(expectedCount: number): Promise<void>;
     toHaveAttribute(expectedAttribute: string): Promise<void>;
     toContainClass(expectedClassName: string): Promise<void>;
+    toHaveLink(expectedLink: string): Promise<void>;
+    toContainLink(expectedLink: string): Promise<void>;
+    toBeClickable(): Promise<void>;
+    toBeSelected(): Promise<void>;
+    toBeDisabled(): Promise<void>;
   }
 }

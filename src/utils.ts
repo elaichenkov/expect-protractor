@@ -25,3 +25,7 @@ export async function getAttribute(element: ElementFinder, attributeName: string
 export async function getElementsCount(elements: ElementArrayFinder): Promise<number> {
   return elements.count();
 }
+
+export async function isElementEnabled(element: ElementFinder): Promise<boolean> {
+  return element.isEnabled();
+}
