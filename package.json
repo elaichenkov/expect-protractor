@@ -10,6 +10,7 @@
   ],
   "scripts": {
     "build": "tsc",
+    "postbuild": "cp ./index.d.ts lib/",
     "lint": "tslint -p tsconfig.json",
     "format:check": "prettier --check 'src/*.ts'",
     "format:write": "prettier --write 'src/*.ts'"
@@ -40,6 +41,7 @@
     "@types/jasmine": "^3.5.12",
     "@types/jasminewd2": "^2.0.8",
     "@types/node": "^14.0.27",
+    "@types/protractor": "4.0.0",
     "prettier": "^2.0.5",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
