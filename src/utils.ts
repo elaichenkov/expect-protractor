@@ -9,3 +9,11 @@ export async function isElementDisplayed(element: ElementFinder): Promise<boolea
     return false;
   }
 }
+
+export async function isElementPresent(element: ElementFinder): Promise<boolean> {
+  return element.isPresent();
+}
+
+export async function getElementText(element: ElementFinder): Promise<string> {
+  return element.getText();
+}
