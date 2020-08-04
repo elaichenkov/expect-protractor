@@ -111,6 +111,25 @@ const customMatchers: jasmine.AsyncCustomMatcherFactories = {
     };
   },
 
+  toHaveAttribute(): jasmine.AsyncCustomMatcher {
+    return {
+      compare(element: ElementFinder, expectedAttribute: string): jasmine.AsyncCustomMatcherResult {
+        const result: jasmine.AsyncCustomMatcherResult = {
+          pass: false,
+          message: '',
+        };
+
+        result.pass = getAttribute(element, expectedAttribute).then((actualAttribute: string): boolean => {
+          result.message = `Expected element '${element.locator().value}' to have attribute ${expectedAttribute}`;
+
+          return !!actualAttribute;
+        });
+
+        return result;
+      },
+    };
+  },
+
   // ElementArrayFinder matchers
   toHaveCount(): jasmine.AsyncCustomMatcher {
     return {
