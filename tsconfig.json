@@ -1,14 +1,12 @@
 {
-    "compilerOptions": {
-      "target": "es6",
-      "module": "commonjs",
-      "outDir": "./lib",
-      "strict": true,
-      "skipLibCheck": true,
-      "lib": [
-        "es2016"
-      ]
-    },
-    "include": ["./src/*", "./index.d.ts"],
-    "exclude": ["lib", "node_modules"]
-  }
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "./lib",
+    "strict": true,
+    "skipLibCheck": true,
+    "lib": ["es2016"]
+  },
+  "include": ["./src/*", "./index.d.ts"],
+  "exclude": ["lib", "node_modules"]
+}
