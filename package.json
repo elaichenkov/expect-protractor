@@ -11,8 +11,8 @@
     "build": "tsc",
     "postbuild": "cp ./src/index.d.ts lib/",
     "lint": "tslint -p tsconfig.json",
-    "format:check": "prettier --check 'src/*.ts'",
-    "format:write": "prettier --write 'src/*.ts'"
+    "format:check": "prettier --check 'src/*.{ts,json,md}'",
+    "format:write": "prettier --write 'src/*.{ts,json,md}'"
   },
   "repository": {
     "type": "git",
