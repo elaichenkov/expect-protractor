@@ -1,4 +1,4 @@
-import { ElementFinder, ElementArrayFinder, ExpectedConditions as EC } from 'protractor';
+import { ElementFinder, ElementArrayFinder, ExpectedConditions as EC, ProtractorBrowser } from 'protractor';
 import {
   isElementDisplayed,
   isElementPresent,
@@ -6,6 +6,11 @@ import {
   getAttribute,
   getElementsCount,
   isElementEnabled,
+  getTitle,
+  getUrl,
+  getWindows,
+  getCssValue,
+  CSS,
 } from './utils';
 
 const customMatchers: jasmine.AsyncCustomMatcherFactories = {
@@ -155,6 +160,44 @@ const customMatchers: jasmine.AsyncCustomMatcherFactories = {
     };
   },
 
+  toHaveCssValue(): jasmine.AsyncCustomMatcher {
+    return {
+      compare(element: ElementFinder, expectedCss: CSS): jasmine.AsyncCustomMatcherResult {
+        const result: jasmine.AsyncCustomMatcherResult = {
+          pass: false,
+          message: '',
+        };
+
+        result.pass = getCssValue(element, expectedCss.property).then((actualCssValue: string): boolean => {
+          result.message = `Expected css value ${actualCssValue} to be ${expectedCss.value}`;
+
+          return actualCssValue === expectedCss.value;
+        });
+
+        return result;
+      },
+    };
+  },
+
+  toContainCssValue(): jasmine.AsyncCustomMatcher {
+    return {
+      compare(element: ElementFinder, expectedCss: CSS): jasmine.AsyncCustomMatcherResult {
+        const result: jasmine.AsyncCustomMatcherResult = {
+          pass: false,
+          message: '',
+        };
+
+        result.pass = getCssValue(element, expectedCss.property).then((actualCssValue: string): boolean => {
+          result.message = `Expected css value ${actualCssValue} to contain ${expectedCss.value}`;
+
+          return actualCssValue.includes(expectedCss.value);
+        });
+
+        return result;
+      },
+    };
+  },
+
   toHaveLink(): jasmine.AsyncCustomMatcher {
     return {
       compare(element: ElementFinder, expectedLink: string): jasmine.AsyncCustomMatcherResult {
@@ -256,6 +299,146 @@ const customMatchers: jasmine.AsyncCustomMatcherFactories = {
           result.message = `Expected elements count ${actualCount} to be ${expectedCount}`;
 
           return actualCount === expectedCount;
+        });
+
+        return result;
+      },
+    };
+  },
+
+  // Browser matchers
+  toHaveTitle(): jasmine.AsyncCustomMatcher {
+    return {
+      compare(browser: ProtractorBrowser, expectedTitle: string): jasmine.AsyncCustomMatcherResult {
+        const result: jasmine.AsyncCustomMatcherResult = {
+          pass: false,
+          message: '',
+        };
+
+        result.pass = getTitle(browser).then((actualTitle: string): boolean => {
+          result.message = `Expected title ${actualTitle} to be ${expectedTitle}`;
+
+          return actualTitle === expectedTitle;
+        });
+
+        return result;
+      },
+    };
+  },
+
+  toContainTitle(): jasmine.AsyncCustomMatcher {
+    return {
+      compare(browser: ProtractorBrowser, expectedTitle: string): jasmine.AsyncCustomMatcherResult {
+        const result: jasmine.AsyncCustomMatcherResult = {
+          pass: false,
+          message: '',
+        };
+
+        result.pass = getTitle(browser).then((actualTitle: string): boolean => {
+          result.message = `Expected title ${actualTitle} to contain ${expectedTitle}`;
+
+          return actualTitle.includes(expectedTitle);
+        });
+
+        return result;
+      },
+    };
+  },
+
+  toHaveUrl(): jasmine.AsyncCustomMatcher {
+    return {
+      compare(browser: ProtractorBrowser, expectedUrl: string): jasmine.AsyncCustomMatcherResult {
+        const result: jasmine.AsyncCustomMatcherResult = {
+          pass: false,
+          message: '',
+        };
+
+        result.pass = getUrl(browser).then((actualUrl: string): boolean => {
+          result.message = `Expected url ${actualUrl} to be ${expectedUrl}`;
+
+          return actualUrl === expectedUrl;
+        });
+
+        return result;
+      },
+    };
+  },
+
+  toContainUrl(): jasmine.AsyncCustomMatcher {
+    return {
+      compare(browser: ProtractorBrowser, expectedUrl: string): jasmine.AsyncCustomMatcherResult {
+        const result: jasmine.AsyncCustomMatcherResult = {
+          pass: false,
+          message: '',
+        };
+
+        result.pass = getUrl(browser).then((actualUrl: string): boolean => {
+          result.message = `Expected url ${actualUrl} to contain ${expectedUrl}`;
+
+          return actualUrl.includes(expectedUrl);
+        });
+
+        return result;
+      },
+    };
+  },
+
+  toHaveWindowsCount(): jasmine.AsyncCustomMatcher {
+    return {
+      compare(browser: ProtractorBrowser, expectedCount: number): jasmine.AsyncCustomMatcherResult {
+        const result: jasmine.AsyncCustomMatcherResult = {
+          pass: false,
+          message: '',
+        };
+
+        result.pass = getWindows(browser).then((windows: string[]): boolean => {
+          const windowsCount = windows.length;
+
+          result.message = `Expected windows count ${windowsCount} to be ${expectedCount}`;
+
+          return windowsCount === expectedCount;
+        });
+
+        return result;
+      },
+    };
+  },
+
+  toHaveWindowsCountMoreThan(): jasmine.AsyncCustomMatcher {
+    return {
+      compare(browser: ProtractorBrowser, expectedCount: number): jasmine.AsyncCustomMatcherResult {
+        const result: jasmine.AsyncCustomMatcherResult = {
+          pass: false,
+          message: '',
+        };
+
+        result.pass = getWindows(browser).then((windows: string[]): boolean => {
+          const windowsCount = windows.length;
+
+          result.message = `Expected windows count ${windowsCount} to be greater than ${expectedCount}`;
+
+          return windowsCount > expectedCount;
+        });
+
+        return result;
+      },
+    };
+  },
+
+  toHaveWindowsCountLessThan(): jasmine.AsyncCustomMatcher {
+    return {
+      compare(browser: ProtractorBrowser, expectedCount: number): jasmine.AsyncCustomMatcherResult {
+        const result: jasmine.AsyncCustomMatcherResult = {
+          pass: false,
+          message: '',
+        };
+
+        result.pass = getWindows(browser).then((windows: string[]): boolean => {
+          const windowsCount = windows.length;
+
+          result.message = `Expected windows count ${windowsCount} to be less than ${expectedCount}`;
+
+          return windowsCount < expectedCount;
         });
 
         return result;
