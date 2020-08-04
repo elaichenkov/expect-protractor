@@ -130,6 +130,24 @@ const customMatchers: jasmine.AsyncCustomMatcherFactories = {
     };
   },
 
+  toContainClass(): jasmine.AsyncCustomMatcher {
+    return {
+      compare(element: ElementFinder, expectedClassName: string): jasmine.AsyncCustomMatcherResult {
+        const result: jasmine.AsyncCustomMatcherResult = {
+          pass: false,
+          message: '',
+        };
+
+        result.pass = getAttribute(element, 'css').then((actualClassNames: string): boolean => {
+          result.message = `Expected class names ${actualClassNames} to contain ${expectedClassName}`;
+
+          return actualClassNames.includes(expectedClassName);
+        });
+        return result;
+      },
+    };
+  },
+
   // ElementArrayFinder matchers
   toHaveCount(): jasmine.AsyncCustomMatcher {
     return {

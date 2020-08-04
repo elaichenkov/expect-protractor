@@ -8,5 +8,6 @@ declare namespace jasmine {
     toContainValue(expectedValue: string): Promise<void>;
     toHaveCount(expectedCount: number): Promise<void>;
     toHaveAttribute(expectedAttribute: string): Promise<void>;
+    toContainClass(expectedClassName: string): Promise<void>;
   }
 }
