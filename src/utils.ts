@@ -1,4 +1,4 @@
-import { ElementFinder } from 'protractor';
+import { ElementFinder, ElementArrayFinder } from 'protractor';
 
 export async function isElementDisplayed(element: ElementFinder): Promise<boolean> {
   try {
@@ -20,4 +20,8 @@ export async function getElementText(element: ElementFinder): Promise<string> {
 
 export async function getAttribute(element: ElementFinder, attributeName: string): Promise<string> {
   return element.getAttribute(attributeName);
+}
+
+export async function getElementsCount(elements: ElementArrayFinder): Promise<number> {
+  return elements.count();
 }

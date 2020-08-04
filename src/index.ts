@@ -1,8 +1,8 @@
-import { ElementFinder } from 'protractor';
-import { isElementDisplayed, isElementPresent, getElementText, getAttribute } from './utils';
+import { ElementFinder, ElementArrayFinder } from 'protractor';
+import { isElementDisplayed, isElementPresent, getElementText, getAttribute, getElementsCount } from './utils';
 
 const customMatchers: jasmine.AsyncCustomMatcherFactories = {
-  // Element matchers
+  // ElementFinder matchers
   toBeDisplayed(): jasmine.AsyncCustomMatcher {
     return {
       compare(element: ElementFinder): jasmine.AsyncCustomMatcherResult {
@@ -104,6 +104,26 @@ const customMatchers: jasmine.AsyncCustomMatcherFactories = {
           result.message = `Expected value '${actualValue}' to contain ${expectedValue}`;
 
           return actualValue.includes(expectedValue);
+        });
+
+        return result;
+      },
+    };
+  },
+
+  // ElementArrayFinder matchers
+  toHaveCount(): jasmine.AsyncCustomMatcher {
+    return {
+      compare(elements: ElementArrayFinder, expectedCount: number): jasmine.AsyncCustomMatcherResult {
+        const result: jasmine.AsyncCustomMatcherResult = {
+          pass: false,
+          message: '',
+        };
+
+        result.pass = getElementsCount(elements).then((actualCount: number): boolean => {
+          result.message = `Expected elements count ${actualCount} to be ${expectedCount}`;
+
+          return actualCount === expectedCount;
         });
 
         return result;
